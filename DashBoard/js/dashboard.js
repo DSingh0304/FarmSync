@@ -1,7 +1,7 @@
 // Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/DashBoard/js/service-worker.js')
+        navigator.serviceWorker.register('js/service-worker.js')
             .then(registration => {
                 console.log('ServiceWorker registration successful');
             })
@@ -25,21 +25,21 @@ async function checkAuthAndLoadData() {
     if (!isAuthenticated) {
         // If not authenticated and offline, redirect to login
         if (isOffline()) {
-            window.location.href = '/login.html';
+            window.location.href = '../login.html';
             return;
         }
         // If online, check server authentication
         try {
-            const response = await fetch('/api/auth/check');
+            const response = await fetch('../api/auth/check');
             if (!response.ok) {
-                window.location.href = '/login.html';
+                window.location.href = '../login.html';
                 return;
             }
             const userData = await response.json();
             await offlineStorage.saveUser(userData);
         } catch (error) {
             console.error('Authentication check failed:', error);
-            window.location.href = '/login.html';
+            window.location.href = '../login.html';
             return;
         }
     }
@@ -59,8 +59,8 @@ async function loadDashboardData() {
         } else {
             // Fetch from server
             const [inventoryResponse, ordersResponse] = await Promise.all([
-                fetch('/api/inventory'),
-                fetch('/api/orders')
+                fetch('../api/inventory'),
+                fetch('../api/orders')
             ]);
 
             if (!inventoryResponse.ok || !ordersResponse.ok) {
@@ -138,11 +138,11 @@ document.querySelector('.dropdown-item[href="#"]').addEventListener('click', asy
     e.preventDefault();
     try {
         if (!isOffline()) {
-            await fetch('/api/auth/logout', { method: 'POST' });
+            await fetch('../api/auth/logout', { method: 'POST' });
         }
         // Clear offline storage
         await offlineStorage.saveUser(null);
-        window.location.href = '/login.html';
+        window.location.href = '../login.html';
     } catch (error) {
         console.error('Logout failed:', error);
     }

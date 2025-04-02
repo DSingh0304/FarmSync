@@ -1,16 +1,26 @@
 const CACHE_NAME = 'farmsync-offline-v1';
 const urlsToCache = [
-    '/DashBoard/farmer_dashboard.html',
-    '/DashBoard/css/style.css',
-    '/DashBoard/js/dashboard.js',
-    '/DashBoard/js/profile.js',
-    '/DashBoard/js/orders.js',
-    '/DashBoard/js/inventory.js',
-    '/DashBoard/img/logo.png',
-    '/DashBoard/fonts/your-fonts.woff2',
-    '/DashBoard/profile.html',
-    '/DashBoard/orders.html',
-    '/DashBoard/inventory.html'
+    'farmer_dashboard.html',
+    'css/app.css',
+    'js/dashboard.js',
+    'js/profile.js',
+    'js/orders.js',
+    'js/inventory.js',
+    'js/offline-storage.js',
+    'js/charts.js',
+    'js/app.js',
+    'img/icons/icon-48x48.png',
+    'img/icons/icon-72x72.png',
+    'img/icons/icon-96x96.png',
+    'img/icons/icon-144x144.png',
+    'img/icons/icon-192x192.png',
+    'img/icons/icon-384x384.png',
+    'img/icons/icon-512x512.png',
+    'profile.html',
+    'orders.html',
+    'inventory.html',
+    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap',
+    'https://cdn.jsdelivr.net/npm/chart.js'
 ];
 
 self.addEventListener('install', event => {
